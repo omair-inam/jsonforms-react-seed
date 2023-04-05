@@ -1,32 +1,100 @@
 {
-  "type": "object",
   "properties": {
-    "name": {
-      "type": "string",
-      "minLength": 1
-    },
-    "description": {
-      "title": "Long Description",
-      "type": "string"
-    },
-    "done": {
-      "type": "boolean"
-    },
-    "due_date": {
-      "type": "string",
-      "format": "date"
-    },
-    "rating": {
-      "type": "integer",
-      "maximum": 5
-    },
-    "recurrence": {
-      "type": "string",
-      "enum": ["Never", "Daily", "Weekly", "Monthly"]
-    },
-    "recurrence_interval": {
-      "type": "integer"
+    "eventTypes": {
+      "type": "array",
+      "title": "Event Types",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Networking Event",
+              "Conference",
+              "Launch Event",
+              "Recruiting Event",
+              "Other",
+              "Happy Hours",
+              "Exhibits & Shows",
+              "Seminars & Workshops",
+              "In-Store Engagement"
+            ]
+          },
+          "default": {
+            "type": "boolean"
+          },
+          "mappings": {
+            "type": "array",
+            "title": "Source Event Field Mappings",
+            "items": {
+              "type": "object",
+              "properties": {
+                "splashField": {
+                  "type": "string",
+                  "title": "Source Event Field",
+                  "enum": [
+                    "Event ID",
+                    "Title",
+                    "Event Start Date",
+                    "Event End Date",
+                    "Event Start Time",
+                    "Event End Time",
+                    "Event Owner Email",
+                    "Event Address",
+                    "Event City",
+                    "Event State",
+                    "Event Zip",
+                    "Event Country",
+                    "Event Description",
+                    "Event URL"
+                  ]
+                },
+                "eloquaField": {
+                  "type": "string",
+                  "title": "Destination Campaign Field",
+                  "enum": [
+                    "Campaign ID",
+                    "Title",
+                    "Campaign Start Date",
+                    "Campaign End Date",
+                    "Campaign Start Time",
+                    "Campaign End Time",
+                    "Campaign Owner Email",
+                    "Campaign Address",
+                    "Campaign City",
+                    "Campaign State",
+                    "Campaign Zip",
+                    "Campaign Country",
+                    "Campaign Description",
+                    "Campaign URL"
+                  ]
+                },
+                "hasOverrideMappings": {
+                  "type": "boolean",
+                  "title": "Specify Overrides"
+                },
+                "overrideMappings": {
+                  "type": "array",
+                  "title": "Override Mappings",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sourceValue": {
+                        "type": "string",
+                        "title": "Value"
+                      },
+                      "targetValue": {
+                        "type": "string",
+                        "title": "Mapped Value"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
-  },
-  "required": ["name", "due_date"]
+  }
 }

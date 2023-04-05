@@ -1,55 +1,85 @@
 {
-  "type": "VerticalLayout",
-  "elements": [
-    {
-      "type": "Control",
-      "label": "Completed",
-      "scope": "#/properties/done"
-    },
-    {
-      "type": "Control",
-      "scope": "#/properties/name"
-    },
-    {
-      "type": "HorizontalLayout",
+  "type": "ListWithDetail",
+  "scope": "#/properties/eventTypes",
+  "options": {
+    "layout": "Accordion",
+    "detail": {
+      "type": "VerticalLayout",
       "elements": [
         {
-          "type": "Control",
-          "scope": "#/properties/due_date"
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/type",
+              "rule": {
+                "effect": "DISABLE",
+                "condition": {
+                  "scope": "#/properties/default",
+                  "schema": {
+                    "const": true
+                  }
+                }
+              }
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/default"
+            }
+          ]
         },
         {
           "type": "Control",
-          "scope": "#/properties/rating"
-        }
-      ]
-    },
-    {
-      "type": "HorizontalLayout",
-      "elements": [
-        {
-          "type": "Control",
-          "scope": "#/properties/recurrence"
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/recurrence_interval",
-          "rule": {
-            "effect": "HIDE",
-            "condition": {
-              "type": "LEAF",
-              "scope": "#/properties/recurrence",
-              "expectedValue": "Never"
+          "scope": "#/properties/mappings",
+          "options": {
+            "layout": "Table",
+            "detail": {
+              "elements": [
+                {
+                  "type": "HorizontalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/splashField"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/eloquaField"
+                    }
+                  ]
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/mappings/hasOverrideMappings"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/mappings/overrideMappings",
+                  "options": {
+                    "detail": {
+                      "elements": [
+                        {
+                          "type": "HorizontalLayout",
+                          "elements": [
+                            {
+                              "type": "Control",
+                              "scope": "#/properties/value"
+                            },
+                            {
+                              "type": "Control",
+                              "scope": "#/properties/mappedValue"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
             }
           }
         }
       ]
-    },
-    {
-      "type": "Control",
-      "scope": "#/properties/description",
-      "options": {
-        "multi": true
-      }
     }
-  ]
+  }
 }
