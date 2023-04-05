@@ -12,6 +12,9 @@
             {
               "type": "Control",
               "scope": "#/properties/type",
+              "options": {
+                "multi": true
+              },
               "rule": {
                 "effect": "DISABLE",
                 "condition": {
