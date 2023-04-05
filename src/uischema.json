@@ -2,7 +2,6 @@
   "type": "ListWithDetail",
   "scope": "#/properties/eventTypes",
   "options": {
-    "layout": "Accordion",
     "detail": {
       "type": "VerticalLayout",
       "elements": [
@@ -35,7 +34,7 @@
           "type": "Control",
           "scope": "#/properties/mappings",
           "options": {
-            "layout": "Table",
+            "layout": "Accordion",
             "detail": {
               "elements": [
                 {
