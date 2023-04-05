@@ -53,11 +53,20 @@
                 },
                 {
                   "type": "Control",
-                  "scope": "#/properties/mappings/hasOverrideMappings"
+                  "scope": "#/properties/hasOverrideMappings"
                 },
                 {
                   "type": "Control",
-                  "scope": "#/properties/mappings/overrideMappings",
+                  "scope": "#/properties/overrideMappings",
+                  "rule": {
+                    "effect": "HIDE",
+                    "condition": {
+                      "scope": "#/properties/hasOverrideMappings",
+                      "schema": {
+                        "const": false
+                      }
+                    }
+                  },
                   "options": {
                     "detail": {
                       "elements": [
